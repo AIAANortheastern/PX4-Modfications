@@ -1,0 +1,17 @@
+#include <px4io_driver.h>
+#include "px4io_serial.cpp"
+
+#define ABORT_MESSAGE 0xFF
+
+class abort : public px4io_serial{
+public:
+    int send_abort();
+    abort();
+}
+
+abort::abort() : px4io_serial() {}
+
+int abort::send_abort(){
+    uint_8 data ABORT_MESSAGE;
+    return write(address, (void *) data, 1);
+}
