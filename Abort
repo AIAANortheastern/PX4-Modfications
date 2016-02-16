@@ -12,6 +12,6 @@ public:
 abort::abort() : px4io_serial() {}
 
 int abort::send_abort(){
-    uint_8 data ABORT_MESSAGE;
+    uint_8 data = ABORT_MESSAGE;
     return write(address, (void *) data, 1);
 }
